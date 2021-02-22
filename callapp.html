@@ -4,34 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>app跳转</title>
-</head>
+  <title>callapp-lib示例</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+      }
+
+      body {
+          text-align: center;
+      }
+
+      #call-button {
+          display: inline-block;
+          margin-top: 50px;
+          padding: 10px;
+          border: 1px solid #000;
+          color: #c30;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+      }
+  </style>
+  <script async src='/cdn-cgi/bm/cv/2172558837/api.js'></script></head>
 <body>
-<div id='call-button'>唤起jd</div>
+<div id='call-button'>点击唤起RayData App  update15个人页</div>
 
 <script src='https://unpkg.com/callapp-lib@2.1.7/dist/index.umd.js'></script>
 <script>
   const option = {
     scheme: {
-      protocol: 'ykshortvideo',
+      protocol: 'raydata',
+      host: 'com.raykite.mobile',
     },
-    intent: {
-      package: "com.tencent.mm",
-      scheme: "weixin"
-    },
-    appstore: "https://itunes.apple.com/cn/app//id414245413",
-    //应用宝
-    yinyongbao:"https://a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall",
-    fallback: "https://a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall", //唤端失败后跳转的地址
+
+    appstore: 'https://itunes.apple.com/cn/app/id1383186862',
+    yingyongbao: '//a.app.qq.com/o/simple.jsp?pkgname=com.youku.shortvideo',
+    fallback: 'https://dianliu.youku.com/service/download',
     timeout: 2000,
   };
   const lib = new CallApp(option);
   const callButton = document.querySelector('#call-button');
+
   callButton.addEventListener('click', () => {
     lib.open({
-      path: 'item.jd.com/10023317042105.html',
+      path: 'project_info',
+      param:{code:'2JZWr7pC',type:'collect'},
+
     });
   });
+
+  // 因为业务需要，我们需要添加 outChain 属性
+  // 但是这样生成出来的 scheme 稍显复杂，所以下面的 log 其实是移除了 outChain 属性的
+  // outChain 很少有同学会使用到，所以更方便大家理解
+
+  // ykshortvideo://profile
+  //     console.log(lib.generateScheme({path: 'project_info'}));
+  //     // intent://profile#Intent;package=com.youku.shortvideo;scheme=ykshortvideo;S.browser_fallback_url=https%3A%2F%2Fdianliu.youku.com%2Fservice%2Fdownload;end;
+  //     console.log(lib.generateIntent({path: 'profile'}));
+  //     // https://flash-link.youku.com?action=profile
+  //     console.log(lib.generateUniversalLink({path: 'profile'}));
 </script>
 </body>
 </html>

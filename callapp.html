@@ -16,13 +16,12 @@
       protocol: 'openApp.jdMobile',
     },
     intent: {
-      package: "com.tencent.mm",
-      scheme: "weixin"
+      package: "com.jingdong.app.mall",
+      scheme: "openapp.jdmobile"
     },
-    appstore: "https://itunes.apple.com/cn/app//id414245413",
-    //应用宝
-    yinyongbao:"https://a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall",
-    fallback: "https://a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall", //唤端失败后跳转的地址
+    appstore: "https://apps.apple.com/cn/app/id414245413",
+    yingyongbao: "//a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall",
+    fallback: "https://m.jd.com/",
     timeout: 2000,
   };
   const lib = new CallApp(option);

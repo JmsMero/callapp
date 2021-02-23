@@ -9,8 +9,8 @@
 <body>
 <div id='call-button'>点击打开链接</div>
 
-<script src='https://unpkg.com/callapp-lib@2.1.7/dist/index.umd.js'></script>
-<script>
+<script src='https://unpkg.com/callapp-lib@2.1.5/dist/index.umd.min.js'></script>
+<script async>
   const option = {
     scheme: {
       protocol: 'openApp.jdMobile',
@@ -22,7 +22,7 @@
     appstore: "https://apps.apple.com/cn/app/id414245413",
     yingyongbao: "//a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall",
     fallback: "https://m.jd.com/",
-    timeout: 2000,
+    timeout: 2e3
   };
   const lib = new CallApp(option);
   const callButton = document.querySelector('#call-button');
